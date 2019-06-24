@@ -19,16 +19,21 @@ with open('fileList.txt', 'r+') as f0:
 print (fileName)
 for path in fileName:
 
-    d = PyQuery(path)
+    d = PyQuery(path, parser="html")
     title = d('title').html()
     #title = title.encode(infoencode).decode(typeEncode,'ignore')
-    print (title)
+    #print (title)
 
     path = title + ".html"
-    with open(path,'wb+') as f1:
-	    f1.write(d.html().encode())
+    #with open(path,'wb+') as f1:
+	#    f1.write(d.html().encode())
 
     #author = d('div.msg em:first').html()
-    author = d('meta[name=description]').html()
+    author = d('head').items()
     #author = author.encode(infoencode).decode(typeEncode,'ignore')
-    print (author)
+    print (d('head').html())
+    for meta in author:
+        if "book_name" in meta.html():
+            print ("111" + meta.text())
+        #if "author" in meta.html():
+        #    print (meta.text())    

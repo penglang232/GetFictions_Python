@@ -3,6 +3,7 @@ import ssl
 import chardet
 import sys
 from pyquery import PyQuery
+from html import unescape
 
 # if len(sys.argv)<2 :
 #    print ('参数数量不正确！')
@@ -20,20 +21,32 @@ print (fileName)
 for path in fileName:
 
     d = PyQuery(path, parser="html")
-    title = d('title').html()
-    #title = title.encode(infoencode).decode(typeEncode,'ignore')
-    #print (title)
+    author = unescape(d('head').html())
+	
+    index = author.find("book_name")
+    title = author[index+20:index+author[index:-1].find("/>")-1]
+    print (title)
+	
+    index = author.find("author")
+    author = "作者：" + author[index+17:index+author[index:-1].find("/>")-1]
+    print (author)
 
-    path = title + ".html"
-    #with open(path,'wb+') as f1:
-	#    f1.write(d.html().encode())
+    file = title + ".txt"
+	
+    route = d(".mulu li:eq(0) a")
+    print(type(route))
+    print(route.attr.href)
+	
+    #with open(title + ".html",'wb+') as f1:
+    #    f1.write(d.html().encode())
+	
+    #with open(file,'wb+') as f1:
+    #    f1.write((title+"\n\n").encode())
+    #    f1.write((author+"\n").encode())
+		
+    #    menu = d(".mulu li").items()
+    #    for m in menu:
+    #        f1.write((m.text() + "\n").encode())    
+    
 
-    #author = d('div.msg em:first').html()
-    author = d('head').items()
-    #author = author.encode(infoencode).decode(typeEncode,'ignore')
-    print (d('head').html())
-    for meta in author:
-        if "book_name" in meta.html():
-            print ("111" + meta.text())
-        #if "author" in meta.html():
-        #    print (meta.text())    
+   

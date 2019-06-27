@@ -34,3 +34,23 @@ def readDocument(url_path):
     return html
 	
 #html = readDocument(path)
+
+
+#title = d('title').html()
+    #title = title.encode(infoencode).decode(typeEncode,'ignore')
+    #print (title)
+	
+	
+	
+ #author = d('div.msg em:first').html()
+    #author = unescape(d('head').html())
+    #author = author.encode(infoencode).decode(typeEncode,'ignore')
+	
+    #print (author)
+   
+	
+    #for meta in author:
+        #if "book_name" in meta.html():
+        #    print ("111" + meta.text())
+        #if "author" in meta.html():
+        #    print (meta.text())    

@@ -54,3 +54,16 @@ def readDocument(url_path):
         #    print ("111" + meta.text())
         #if "author" in meta.html():
         #    print (meta.text())    
+		
+		
+
+
+    #route = d(".chapter:eq(1) ul li").items()
+    #for r in route:
+    #    c_path = r.find("a").attr.href
+    #    print(c_path[c_path.find("-"):])
+    #    print(r.find("a").text())
+	
+    start = time.time()
+	end = time.time() - start
+    print(end)
